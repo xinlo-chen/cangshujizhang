@@ -3,7 +3,7 @@
     <NumberPad/>
     <Types/>
     <Notes/>
-    <Tags :data-souse="tags"/>
+    <Tags :data-source.sync="tags"/>
   </layout>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   components: {Tags, Notes, Types, NumberPad},
   data() {
     return {
-      tags: ['衣', '食', '住', '行']
+      tags: ['衣', '食', '住', '行'],
     }
   }
 };
