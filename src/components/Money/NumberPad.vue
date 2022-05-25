@@ -58,7 +58,9 @@ export default class Types extends Vue {
     this.output = '0';
   }
 
-  ok() {}
+  ok() {
+    this.$emit('update:value',this.output)
+  }
 }
 </script>
 
