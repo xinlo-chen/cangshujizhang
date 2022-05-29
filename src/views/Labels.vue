@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <button class="createTag" @click="createTag">新建标签</button>
+      <Button class="createTag" @click="createTag">新建标签</Button>
     </div>
   </Layout>
 </template>
@@ -16,10 +16,11 @@
 import Vue from 'vue';
 import tagsListModel from '@/models/tagsListModel';
 import {Component} from 'vue-property-decorator';
+import Button from '@/components/Button.vue';
 
 tagsListModel.fetch();
 
-@Component
+@Component({components:{Button}})
 export default class Labels extends Vue {
   tags = tagsListModel.data;
 
@@ -29,8 +30,8 @@ export default class Labels extends Vue {
       const message = tagsListModel.create(name);
       if (message === 'duplicated') {
         window.alert('标签重复');
-      }else if(message === 'success'){
-        window.alert('添加成功')
+      } else if (message === 'success') {
+        window.alert('添加成功');
       }
     }
   }
@@ -59,18 +60,20 @@ export default class Labels extends Vue {
   }
 }
 
-.createTag-wrapper {
-  text-align: center;
-  padding: 16px;
 
-  .createTag {
-    background: #767676;
-    color: white;
-    border-radius: 4px;
-    border: none;
-    height: 40px;
-    padding: 0 16px;
+.createTag {
+  background: #767676;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  height: 40px;
+  padding: 0 16px;
+
+  &-wrapper {
+    text-align: center;
+    padding: 16px;
     margin-top: 44-16px;
   }
 }
+
 </style>
