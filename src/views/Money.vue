@@ -19,7 +19,7 @@ import tagsListModel from '@/models/tagsListModel';
 
 
 const recordList = recordListModel.fetch();
-const recordTags = tagsListModel.fetch();
+const tagsList = tagsListModel.fetch();
 
 // const version = window.localStorage.getItem('version') || '0';
 // const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]');
