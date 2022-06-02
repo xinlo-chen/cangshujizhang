@@ -1,14 +1,15 @@
-const localstorageKeyName = 'recordList'
+const localstorageKeyName = 'recordList';
 const recordListModel = {
-  fetch() {
-    return JSON.parse(window.localStorage.getItem(localstorageKeyName) || '[]') as RecordItem[];
-  },
-  clone(data :RecordItem[] | RecordItem){
+  data:[] as RecordItem[],
+  clone(data: RecordItem[] | RecordItem) {
     return JSON.parse(JSON.stringify(data));
   },
-
-  save(data:RecordItem[]) {
-    window.localStorage.setItem(localstorageKeyName, JSON.stringify(data));
+  fetch() {
+    this.data= JSON.parse(window.localStorage.getItem(localstorageKeyName) || '[]') as RecordItem[];
+    return this.data;
+  },
+  save() {
+    window.localStorage.setItem(localstorageKeyName, JSON.stringify(this.data));
   }
-}
+};
 export default recordListModel;
