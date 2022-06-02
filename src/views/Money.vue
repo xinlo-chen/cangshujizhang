@@ -24,7 +24,6 @@ import tagsListModel from '@/models/tagsListModel';
 
 
 const recordList = recordListModel.fetch();
-const tagsList = tagsListModel.fetch();
 
 // const version = window.localStorage.getItem('version') || '0';
 // const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]');
@@ -43,7 +42,7 @@ const tagsList = tagsListModel.fetch();
   components: {Tags, FormItem, Types, NumberPad},
 })
 export default class Money extends Vue {
-  tags = tagsList;
+  tags = window.tagList;
   recordList: RecordItem[] = recordList;
   record: RecordItem = {tags: [], notes: '', type: '-', amount: 0};
 
