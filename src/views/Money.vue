@@ -48,9 +48,9 @@ export default class Money extends Vue {
   //   this.record.type = value;
   // };
 
-  //  onUpdateAmount(value: string) {
-  //    this.record.amount = parseFloat(value);
-  //  };
+    onUpdateAmount(value: string) {
+      this.record.amount = parseFloat(value);
+    };
 }
 </script>
 
