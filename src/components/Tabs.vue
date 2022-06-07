@@ -10,7 +10,7 @@
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
-type DataSourceItem = { text: string, value: string };
+type DataSourceItem = { text: string, value: string }
 
 @Component
 export default class Tabs extends Vue {
@@ -25,11 +25,11 @@ export default class Tabs extends Vue {
     return{
       [this.classPrefix + '-tabs-item']: this.classPrefix,
       selected: item.value === this.value
-    }
-  };
+    };
+  }
 
   select(item: DataSourceItem) {
-    this.$emit('update:value,item.value');
+    this.$emit('update:value', item.value);
   }
 }
 </script>
