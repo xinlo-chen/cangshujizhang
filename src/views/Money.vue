@@ -24,7 +24,7 @@ import {Component} from 'vue-property-decorator';
   components: {Tags, FormItem, Types, NumberPad},
   computed:{
     recordList(){
-      return this.$store.state.recordList;
+      return this.$store.state.tagList;
     }
   }
 })
