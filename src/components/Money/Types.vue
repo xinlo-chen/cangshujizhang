@@ -1,8 +1,12 @@
 <template>
   <div>
     <ul class="types">
-      <li :class="value === '-' && 'selected'" @click="selectType('-')">支出</li>
-      <li :class="value === '+' && 'selected'" @click="selectType('+')">收入</li>
+      <li :class="{[classPrefix+'-item']: classPrefix, selected: value==='-'}"
+          @click="selectType('-')">支出
+      </li>
+      <li :class="{[classPrefix+'-item']: classPrefix, selected: value==='+'}"
+          @click="selectType('+')">收入
+      </li>
     </ul>
   </div>
 </template>
@@ -11,33 +15,18 @@
 import Vue from 'vue';
 import {Component, Prop, Watch} from 'vue-property-decorator';
 
-// 1 自动提示更加智能
-// 2 你不能随便写 .toString()
-// 3 编译报错 无法编程JS 严谨
 @Component
 export default class Types extends Vue {
-  // type = '-';  //'-'表示支出 '+'表示收入
+  @Prop(String) readonly value!: string;
+  @Prop(String) classPrefix?: string;
 
-  // @Prop(Number) xxx: number | undefined;
-  //prop 告诉 Vue.xxx 不是data 是prop
-  //Number 告诉 Vue.xxx 运行时是个Number
-  // xxx 是属性名
-  // number | undefined 告诉 TS xxx 的编译类型
-
-@Prop({default:'-'}) readonly value!:string;
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unknown');
     }
-    this.$emit('update:value',type)
+    this.$emit('update:value', type);
   }
-//   @Watch('type')
-//   onTypeChanged(value:string){
-//     this.$emit('update:value',this.type)
-//   }
 }
-
-
 </script>
 
 <style lang="scss" scoped>
