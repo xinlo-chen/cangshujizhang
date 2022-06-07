@@ -15,20 +15,18 @@
 <script lang="ts">
 import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
-import tagHelper from '@/mixins/tagHelper';
-
+import TagHelper from '@/mixins/TagHelper';
+import {mixins} from 'vue-class-component';
 
 @Component({
-  components: {Button},
-  mixins:[tagHelper],
-  computed: {
-    tags() {
-      return this.$store.state.tagList;
-    },
+  components:{Button}
+})
+
+export default class Labels extends mixins(TagHelper) {
+  get tags(){
+    return this.$store.state.tagList;
 
   }
-})
-export default class Labels extends minxins {
   beforeCreated() {
     this.$store.commit('fetchTags');
   }
