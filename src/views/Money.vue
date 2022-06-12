@@ -1,7 +1,7 @@
 <template>
   <layout class-prefix="layout">
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
-    <Tabs :data-source = "recordTypeList"
+    <Tabs :data-source="recordTypeList"
           :value.sync="record.type"/>
     <div class="notes">
       <FormItem field-name="备注"
@@ -30,7 +30,7 @@ export default class Money extends Vue {
     return this.$store.state.recordList;
   }
 
-  recordTypeList = recordTypeList
+  recordTypeList = recordTypeList;
   record: RecordItem =
       {tags: [], notes: '', type: '-', amount: 0};
 
@@ -51,9 +51,9 @@ export default class Money extends Vue {
   //   this.record.type = value;
   // };
 
-    onUpdateAmount(value: string) {
-      this.record.amount = parseFloat(value);
-    };
+  onUpdateAmount(value: string) {
+    this.record.amount = parseFloat(value);
+  };
 }
 </script>
 
