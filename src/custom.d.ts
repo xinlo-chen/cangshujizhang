@@ -4,7 +4,6 @@ type RootState = {
   currentTag?: Tag
 }
 
-type RecordList = {}
 
 type RecordItem = {
   tags: Tag[]
