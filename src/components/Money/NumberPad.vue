@@ -22,12 +22,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  @Prop(Number) readonly value!: number;
-  output = this.value.toString();
+  output = '0';
 
   inputContent(event: MouseEvent) {
     const button = (event.target as HTMLBaseElement);
@@ -60,7 +59,7 @@ export default class Types extends Vue {
   }
 
   ok() {
-    const number = parseFloat(this.output)
+    const number = parseFloat(this.output);
     this.$emit('update:value', number);
     this.$emit('submit', number);
     this.output = '0';
